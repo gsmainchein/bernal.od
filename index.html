@@ -31,6 +31,12 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
+        
+        /* Cursor Default Escondido em PCs (substituído pelo customizado) */
+        @media (pointer: fine) { 
+            body, a, button, .card, .bento-card, .g-item { cursor: none !important; } 
+        }
+
         body { 
             background: var(--bg-body); color: var(--text-main); 
             font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.7; overflow-x: hidden; 
@@ -75,8 +81,9 @@
         }
         .btn-cta:hover { background: var(--accent-hover); transform: translateY(-3px); color: var(--primary); }
 
-        .mobile-toggle { display: none; font-size: 1.5rem; color: var(--primary); cursor: pointer; }
+        .mobile-toggle { display: none; font-size: 1.5rem; color: var(--primary); }
 
+        /* --- HERO --- */
         .hero { padding: 90px 0 110px; position: relative; background: var(--bg-body); overflow: hidden; }
         .hero::before {
             content: ''; position: absolute; top: -10%; right: -5%; width: 500px; height: 500px;
@@ -111,10 +118,11 @@
         .badge-text h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.2rem; color: var(--primary); font-weight: 700; margin-bottom: 2px;}
         .badge-text p { font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px;}
 
+        /* --- STATS ANIMADOS --- */
         .stats-wrapper { background: var(--bg-alt); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
         .stats-grid { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; padding: 50px 25px; gap: 30px; }
         .stat-item { text-align: center; }
-        .stat-item h3 { font-size: 3rem; color: var(--primary); margin-bottom: 5px; }
+        .stat-item h3 { font-size: 3.5rem; color: var(--primary); margin-bottom: 5px; font-variant-numeric: tabular-nums; }
         .stat-item h3 span { color: var(--accent); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.5rem;}
         .stat-item p { color: var(--text-light); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
 
@@ -157,17 +165,18 @@
             font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 25px;
         }
         .bento-title { font-size: 1.8rem; font-family: 'Playfair Display', serif; color: var(--primary); margin-bottom: 15px; line-height: 1.2;}
-        .bento-text { color: var(--text-light); font-size: 1rem; max-width: 90%; }
+        .bento-text { color: var(--text-light); font-size: 1rem; max-width: 90%; z-index: 2; position: relative;}
         
         .bento-arrow {
             width: 45px; height: 45px; border-radius: 50%; background: var(--bg-body); border: 1px solid var(--border-color);
             display: flex; align-items: center; justify-content: center; color: var(--primary);
-            position: absolute; bottom: 35px; right: 35px; transition: all 0.4s ease;
+            position: absolute; bottom: 35px; right: 35px; transition: all 0.4s ease; z-index: 2;
         }
         .bento-card:hover .bento-arrow {
             background: var(--primary); color: var(--accent); transform: rotate(-45deg); border-color: var(--primary);
         }
 
+        /* --- SERVIÇOS E SLIDE-UP HOVER (REF: VÍDEO 00:05) --- */
         .services { padding: 120px 0; background: var(--bg-body); }
         .section-header { text-align: center; margin-bottom: 70px; max-width: 700px; margin-left: auto; margin-right: auto; padding: 0 20px;}
         .section-header h2 { font-size: 3.2rem; color: var(--primary); margin-bottom: 20px; }
@@ -178,22 +187,28 @@
         }
 
         .card {
-            background: var(--bg-alt); padding: 50px 40px; border-radius: 8px; border: 1px solid var(--border-color);
-            transition: var(--transition); cursor: pointer; position: relative; overflow: hidden;
-        }
-        .card::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: var(--accent); transition: var(--transition);
+            background: var(--bg-alt); padding: 50px 40px 90px 40px; border-radius: 8px; border: 1px solid var(--border-color);
+            transition: var(--transition); position: relative; overflow: hidden;
         }
         .card:hover { transform: translateY(-10px); box-shadow: var(--shadow-md); border-color: transparent; }
-        .card:hover::after { width: 100%; }
 
         .card-icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 30px; transition: var(--transition); }
         .card h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; color: var(--primary); }
-        .card p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 30px; }
+        .card p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 0; }
         
-        .card-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--primary); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); }
-        .card:hover .card-link { color: var(--accent); gap: 15px; }
+        /* A Mágica do Hover Slide-up */
+        .card .card-link {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 70px;
+            background: var(--primary); color: var(--accent); text-decoration: none;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;
+            transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 0 0 8px 8px;
+        }
+        .card:hover .card-link { transform: translateY(0); }
+        .card:hover .card-icon { transform: scale(1.1); color: var(--primary); }
 
+        /* --- HOW IT WORKS --- */
         .how-it-works { background: var(--primary); color: var(--bg-alt); padding: 100px 0; }
         .how-grid { max-width: 1300px; margin: 0 auto; padding: 0 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .how-text h2 { font-size: 3rem; margin-bottom: 20px; color: var(--bg-alt); }
@@ -203,15 +218,17 @@
         .step h4 { font-size: 1.2rem; margin-bottom: 5px; color: var(--bg-alt); }
         .step p { color: #A0A5B0; font-size: 0.95rem; }
 
+        /* --- GALERIA --- */
         .gallery { padding: 120px 0; background: var(--bg-body); }
         .gallery-grid { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 0 25px; }
-        .g-item { border-radius: 4px; overflow: hidden; position: relative; height: 350px; cursor: pointer;}
+        .g-item { border-radius: 4px; overflow: hidden; position: relative; height: 350px;}
         .g-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; filter: brightness(0.9); }
         .g-item:hover img { transform: scale(1.08); filter: brightness(1); }
         .g-item.large { grid-column: span 2; }
-        .g-item .overlay-text { position: absolute; bottom: 20px; left: 20px; color: white; font-size: 1.2rem; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,0.5); opacity: 0; transition: var(--transition); transform: translateY(10px); }
+        .g-item .overlay-text { position: absolute; bottom: 20px; left: 20px; color: white; font-size: 1.2rem; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,0.5); opacity: 0; transition: var(--transition); transform: translateY(10px); pointer-events: none;}
         .g-item:hover .overlay-text { opacity: 1; transform: translateY(0); }
 
+        /* --- FOOTER & CTAS --- */
         .cta-banner { max-width: 1200px; margin: -60px auto 60px; background: var(--bg-alt); border-radius: 8px; padding: 60px 80px; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-md); position: relative; z-index: 10; border: 1px solid var(--border-color); }
         .cta-banner h2 { color: var(--primary); font-size: 2.2rem; margin-bottom: 10px; }
         .cta-banner p { color: var(--text-light); font-size: 1.1rem; }
@@ -226,21 +243,36 @@
         .footer-logo { font-size: 1.6rem; font-weight: 700; color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 10px; margin-bottom: 25px;}
         .footer-text { color: #A0A5B0; font-size: 0.95rem; margin-bottom: 25px; max-width: 300px;}
         .footer-socials { display: flex; gap: 15px; }
-        .footer-socials a { width: 45px; height: 45px; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--bg-alt); transition: var(--transition); text-decoration: none;}
-        .footer-socials a:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-3px); }
+        .footer-socials a { width: 45px; height: 45px; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--bg-alt); transition: var(--transition); text-decoration: none; z-index: 10;}
+        .footer-socials a:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-3px); color: var(--primary);}
         .footer-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 25px; color: var(--bg-alt); }
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 15px; }
-        .footer-links a { color: #A0A5B0; text-decoration: none; transition: var(--transition); font-size: 0.95rem; }
+        .footer-links a { color: #A0A5B0; text-decoration: none; transition: var(--transition); font-size: 0.95rem; z-index: 10; position: relative;}
         .footer-links a:hover { color: var(--accent); padding-left: 5px; }
         .footer-contact li { display: flex; gap: 15px; margin-bottom: 20px; color: #A0A5B0; font-size: 0.95rem; align-items: flex-start;}
         .footer-contact i { color: var(--accent); font-size: 1.2rem; margin-top: 3px;}
         .copyright { text-align: center; color: #666; font-size: 0.9rem; padding-top: 30px; letter-spacing: 1px;}
 
+        /* --- REVEAL ANIMATIONS --- */
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; }
 
+        /* --- CURSOR MAGNÉTICO (CSS) --- */
+        .custom-cursor {
+            position: fixed; top: 0; left: 0; width: 15px; height: 15px;
+            background-color: var(--accent); border-radius: 50%;
+            pointer-events: none; z-index: 99999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, background-color 0.3s, opacity 0.3s;
+        }
+        .custom-cursor.cursor-grow {
+            width: 60px; height: 60px; background-color: rgba(138, 199, 158, 0.35);
+            backdrop-filter: blur(2px); border: 1px solid rgba(138, 199, 158, 0.5);
+        }
+
+        /* --- RESPONSIVIDADE --- */
         @media (max-width: 1024px) {
             .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 40px;}
             .hero-text h1 { font-size: 3.5rem; }
@@ -248,10 +280,8 @@
             .hero-img-box { text-align: center; }
             .hero-img-box img { max-width: 100%; border-radius: 8px; }
             .floating-badge { left: 20px; bottom: 20px; }
-            
             .bento-grid { grid-template-columns: 1fr 1fr; }
             .bento-large { grid-column: span 2; }
-            
             .how-grid { grid-template-columns: 1fr; gap: 40px;}
             .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
             .cta-banner { flex-direction: column; text-align: center; gap: 30px; padding: 40px; }
@@ -259,7 +289,7 @@
 
         @media (max-width: 768px) {
             .top-bar { display: none; }
-            .mobile-toggle { display: block; z-index: 2001; }
+            .mobile-toggle { display: block; z-index: 2001; cursor: pointer; }
             .nav-links { 
                 position: fixed; top: 0; right: -100%; width: 80%; height: 100vh; background: var(--bg-alt);
                 flex-direction: column; justify-content: center; align-items: center; gap: 30px;
@@ -270,7 +300,6 @@
 
             .hero { padding: 50px 0; }
             .hero-text h1 { font-size: 2.8rem; }
-            .stat-item h3 { font-size: 2.2rem; }
             
             .bento-grid { grid-template-columns: 1fr; }
             .bento-large { grid-column: span 1; }
@@ -345,21 +374,23 @@
     <section class="stats-wrapper reveal">
         <div class="stats-grid">
             <div class="stat-item">
-                <h3>500<span>+</span></h3>
+                <h3 class="counter">0<span>+</span></h3>
                 <p>Sorrisos Transformados</p>
+                <!-- O HTML inicia com 0, o JS fará subir para 500 -->
+                <span class="hidden-target" style="display:none;">500</span> 
             </div>
             <div class="stat-item">
-                <h3>15<span>+</span></h3>
+                <h3 class="counter">0<span>+</span></h3>
                 <p>Anos Cuidando de Você</p>
+                <span class="hidden-target" style="display:none;">15</span>
             </div>
             <div class="stat-item">
-                <h3>100<span>%</span></h3>
+                <h3 class="counter">0<span>%</span></h3>
                 <p>Ambiente Acolhedor</p>
+                <span class="hidden-target" style="display:none;">100</span>
             </div>
         </div>
     </section>
-
-    <!-- INÍCIO: NOVOS COMPONENTES (MARQUEE & BENTO BOX) -->
     
     <div class="marquee-container reveal">
         <div class="marquee-content">
@@ -411,8 +442,6 @@
         </div>
     </section>
 
-    <!-- FIM: NOVOS COMPONENTES -->
-
     <section id="servicos" class="services">
         <div class="section-header reveal">
             <h2>Nossas Soluções</h2>
@@ -424,19 +453,19 @@
                 <div class="card-icon"><i class="fas fa-gem"></i></div>
                 <h3>Estética e Lentes</h3>
                 <p>Procedimentos estéticos minimamente invasivos que visam a sua saúde bucal, tornando o processo de cuidar do seu sorriso uma experiência leve e descomplicada.</p>
-                <a href="#" class="card-link">Saber mais <i class="fas fa-arrow-right"></i></a>
+                <a href="https://wa.me/5500000000000" class="card-link">Saber mais <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="card reveal delay-1">
                 <div class="card-icon"><i class="fas fa-microscope"></i></div>
                 <h3>Implantes e Reabilitação</h3>
                 <p>Redescubra o prazer de comer e sorrir com segurança. Soluções modernas e guiadas digitalmente para quem busca conforto, estética e facilidade de manutenção.</p>
-                <a href="#" class="card-link">Saber mais <i class="fas fa-arrow-right"></i></a>
+                <a href="https://wa.me/5500000000000" class="card-link">Saber mais <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="card reveal delay-2">
                 <div class="card-icon"><i class="fas fa-magic"></i></div>
                 <h3>Ortodontia e Invisalign</h3>
                 <p>Corrija a posição dos dentes com discrição e conforto. Mais harmonia para o seu rosto, além de prevenir problemas futuros e melhorar sua mastigação.</p>
-                <a href="#" class="card-link">Saber mais <i class="fas fa-arrow-right"></i></a>
+                <a href="https://wa.me/5500000000000" class="card-link">Saber mais <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -568,7 +597,9 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- SCRIPTS -->
     <script>
+        // Menu Mobile (Hamburger)
         const mobileToggle = document.getElementById('mobile-toggle');
         const navLinks = document.getElementById('nav-links');
         const menuIcon = mobileToggle.querySelector('i');
@@ -592,12 +623,14 @@
             });
         });
 
+        // Efeito Header Scrolled
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) header.classList.add('scrolled');
             else header.classList.remove('scrolled');
         });
 
+        // Scroll Reveal Animations
         const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -609,6 +642,74 @@
         }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
 
         revealElements.forEach(el => revealObserver.observe(el));
+
+        // Cursor Personalizado e Magnético
+        if (window.matchMedia("(pointer: fine)").matches) {
+            const cursor = document.createElement('div');
+            cursor.classList.add('custom-cursor');
+            document.body.appendChild(cursor);
+
+            let mouseX = 0, mouseY = 0;
+            let cursorX = 0, cursorY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            function animateCursor() {
+                let dx = mouseX - cursorX;
+                let dy = mouseY - cursorY;
+                cursorX += dx * 0.15; // Velocidade do rastro
+                cursorY += dy * 0.15;
+                cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+
+            // Interação do cursor ao passar em elementos clicáveis
+            const interactives = document.querySelectorAll('a, button, .card, .bento-card, .g-item, .mobile-toggle');
+            interactives.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('cursor-grow'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-grow'));
+            });
+        }
+
+        // Contador Animado de Números
+        const statItemsContainers = document.querySelectorAll('.stat-item');
+        let hasCounted = false;
+
+        const countUp = (container) => {
+            const h3 = container.querySelector('h3.counter');
+            const targetVal = parseInt(container.querySelector('.hidden-target').innerText);
+            const suffix = h3.querySelector('span').innerText;
+            
+            const duration = 2000;
+            const stepTime = Math.abs(Math.floor(duration / targetVal));
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += Math.ceil(targetVal / 60); 
+                if (current >= targetVal) {
+                    h3.innerHTML = targetVal + `<span>${suffix}</span>`;
+                    clearInterval(timer);
+                } else {
+                    h3.innerHTML = current + `<span>${suffix}</span>`;
+                }
+            }, stepTime);
+        };
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasCounted) {
+                    statItemsContainers.forEach(container => countUp(container));
+                    hasCounted = true; 
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-wrapper');
+        if(statsSection) statsObserver.observe(statsSection);
     </script>
 </body>
 </html>
