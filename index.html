@@ -3,24 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Bernal | Odontologia de Alta Performance</title>
+    <title>Dr. Bernal | Odontologia e Bem-estar</title>
     
-    <!-- Tipografia Premium: Playfair Display (Títulos) + Plus Jakarta Sans (Textos) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            /* Paleta Premium: Carvão Escuro e Dourado Champagne */
-            --primary: #1A1C20; /* Grafite quase preto */
+            --primary: #1A1C20; 
             --primary-light: #2D3037;
-            --accent: #C8A97E; /* Dourado Champagne suave */
-            --accent-hover: #B09267;
-            --bg-body: #FAFAFA; /* Off-white luxuoso */
+            --accent: #8ac79e; 
+            --accent-hover: #76b58b; 
+            --bg-body: #FAFAFA; 
             --bg-alt: #FFFFFF;
             --text-main: #333333;
             --text-light: #666666;
@@ -28,7 +24,7 @@
             
             --shadow-sm: 0 5px 15px rgba(0,0,0,0.05);
             --shadow-md: 0 15px 35px rgba(26, 28, 32, 0.08);
-            --shadow-gold: 0 10px 25px rgba(200, 169, 126, 0.25);
+            --shadow-accent: 0 10px 25px rgba(138, 199, 158, 0.35);
             
             --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
@@ -42,7 +38,6 @@
 
         h1, h2, h3, .logo-text, .serif { font-family: 'Playfair Display', serif; }
 
-        /* --- TOP BAR INFO --- */
         .top-bar {
             background: var(--primary); color: #E0E0E0; padding: 8px 0; font-size: 0.8rem; letter-spacing: 0.5px;
         }
@@ -51,11 +46,10 @@
         }
         .top-bar i { color: var(--accent); margin-right: 6px; }
 
-        /* --- HEADER & NAVIGATION --- */
         header {
             position: sticky; top: 0; width: 100%; z-index: 2000;
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px); /* Efeito Glassmorphism */
+            backdrop-filter: blur(10px); 
             transition: var(--transition); border-bottom: 1px solid transparent;
         }
         header.scrolled { box-shadow: var(--shadow-sm); border-bottom: 1px solid var(--border-color); }
@@ -68,28 +62,25 @@
         .logo i { font-size: 1.8rem; color: var(--accent); }
         .logo-text { font-size: 1.6rem; font-weight: 700; color: var(--primary); }
 
-        /* Menu de Navegação */
         .nav-links { display: flex; list-style: none; gap: 40px; align-items: center; }
         .nav-links a {
-            text-decoration: none; color: var(--text-main); font-weight: 500; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition);
+            text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition);
         }
         .nav-links a:hover { color: var(--accent); }
 
         .btn-cta {
-            background: var(--accent); color: var(--bg-alt); padding: 14px 35px; border-radius: 4px; /* Bordas retas são mais corporativas/premium */
-            text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
-            transition: var(--transition); display: inline-flex; align-items: center; gap: 10px; box-shadow: var(--shadow-gold);
+            background: var(--accent); color: var(--primary); padding: 14px 35px; border-radius: 4px; 
+            text-decoration: none; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
+            transition: var(--transition); display: inline-flex; align-items: center; gap: 10px; box-shadow: var(--shadow-accent);
         }
-        .btn-cta:hover { background: var(--accent-hover); transform: translateY(-3px); color: var(--bg-alt); }
+        .btn-cta:hover { background: var(--accent-hover); transform: translateY(-3px); color: var(--primary); }
 
-        /* Ícone Menu Mobile */
         .mobile-toggle { display: none; font-size: 1.5rem; color: var(--primary); cursor: pointer; }
 
-        /* --- HERO SECTION --- */
         .hero { padding: 90px 0 110px; position: relative; background: var(--bg-body); overflow: hidden; }
         .hero::before {
             content: ''; position: absolute; top: -10%; right: -5%; width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(200, 169, 126, 0.08) 0%, transparent 70%); border-radius: 50%; z-index: 0;
+            background: radial-gradient(circle, rgba(138, 199, 158, 0.15) 0%, transparent 70%); border-radius: 50%; z-index: 0;
         }
 
         .hero-grid {
@@ -98,11 +89,11 @@
 
         .hero-tag {
             display: inline-block; padding: 6px 15px; border: 1px solid var(--accent); color: var(--accent);
-            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; font-weight: 600;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; font-weight: 700;
         }
 
-        .hero-text h1 { font-size: 4.5rem; font-weight: 600; line-height: 1.1; margin-bottom: 25px; color: var(--primary); }
-        .hero-text h1 span { font-style: italic; color: var(--accent); font-weight: 500;}
+        .hero-text h1 { font-size: 4.2rem; font-weight: 600; line-height: 1.1; margin-bottom: 25px; color: var(--primary); }
+        .hero-text h1 span { font-style: italic; color: var(--accent); font-weight: 600;}
         .hero-text p { font-size: 1.15rem; color: var(--text-light); margin-bottom: 45px; max-width: 500px; }
 
         .hero-img-box { position: relative; text-align: right; }
@@ -110,7 +101,6 @@
             width: 95%; max-width: 500px; border-radius: 8px; box-shadow: var(--shadow-md); object-fit: cover;
         }
 
-        /* Cartão flutuante */
         .floating-badge {
             position: absolute; bottom: 30px; left: -40px; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px);
             padding: 20px 25px; border-radius: 8px; box-shadow: var(--shadow-md); display: flex; align-items: center; gap: 15px;
@@ -121,15 +111,63 @@
         .badge-text h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.2rem; color: var(--primary); font-weight: 700; margin-bottom: 2px;}
         .badge-text p { font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px;}
 
-        /* --- STATS / WHY US --- */
         .stats-wrapper { background: var(--bg-alt); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
         .stats-grid { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; padding: 50px 25px; gap: 30px; }
         .stat-item { text-align: center; }
         .stat-item h3 { font-size: 3rem; color: var(--primary); margin-bottom: 5px; }
         .stat-item h3 span { color: var(--accent); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.5rem;}
-        .stat-item p { color: var(--text-light); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; }
+        .stat-item p { color: var(--text-light); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
 
-        /* --- SERVICES SECTION --- */
+        /* --- MARQUEE ANIMADO --- */
+        .marquee-container {
+            width: 100%; overflow: hidden; background: var(--primary); color: var(--accent); 
+            padding: 25px 0; display: flex; align-items: center; white-space: nowrap; 
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .marquee-content {
+            display: flex; animation: scroll-marquee 25s linear infinite; 
+            font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 500; 
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+        .marquee-content span { margin: 0 40px; display: inline-flex; align-items: center; gap: 15px; }
+        .marquee-content span i { font-size: 0.8rem; }
+        @keyframes scroll-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- BENTO BOX MODULAR --- */
+        .bento-section { padding: 120px 0; background: var(--bg-body); border-bottom: 1px solid var(--border-color); }
+        .bento-grid {
+            max-width: 1300px; margin: 0 auto; display: grid; 
+            grid-template-columns: repeat(3, 1fr); gap: 25px; padding: 0 25px;
+        }
+        .bento-card {
+            background: var(--bg-alt); border-radius: 24px; padding: 45px;
+            border: 1px solid var(--border-color); position: relative; overflow: hidden;
+            display: flex; flex-direction: column; justify-content: space-between;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .bento-card:hover {
+            transform: translateY(-8px); box-shadow: var(--shadow-md);
+            border-color: rgba(138, 199, 158, 0.4); 
+        }
+        .bento-large { grid-column: span 2; }
+        
+        .bento-tag {
+            display: inline-block; align-self: flex-start; padding: 6px 16px; 
+            background: rgba(138, 199, 158, 0.15); color: #6db083; border-radius: 50px; 
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 25px;
+        }
+        .bento-title { font-size: 1.8rem; font-family: 'Playfair Display', serif; color: var(--primary); margin-bottom: 15px; line-height: 1.2;}
+        .bento-text { color: var(--text-light); font-size: 1rem; max-width: 90%; }
+        
+        .bento-arrow {
+            width: 45px; height: 45px; border-radius: 50%; background: var(--bg-body); border: 1px solid var(--border-color);
+            display: flex; align-items: center; justify-content: center; color: var(--primary);
+            position: absolute; bottom: 35px; right: 35px; transition: all 0.4s ease;
+        }
+        .bento-card:hover .bento-arrow {
+            background: var(--primary); color: var(--accent); transform: rotate(-45deg); border-color: var(--primary);
+        }
+
         .services { padding: 120px 0; background: var(--bg-body); }
         .section-header { text-align: center; margin-bottom: 70px; max-width: 700px; margin-left: auto; margin-right: auto; padding: 0 20px;}
         .section-header h2 { font-size: 3.2rem; color: var(--primary); margin-bottom: 20px; }
@@ -153,10 +191,9 @@
         .card h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; color: var(--primary); }
         .card p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 30px; }
         
-        .card-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--primary); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); }
+        .card-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--primary); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); }
         .card:hover .card-link { color: var(--accent); gap: 15px; }
 
-        /* --- COMO FUNCIONA (Nova Seção) --- */
         .how-it-works { background: var(--primary); color: var(--bg-alt); padding: 100px 0; }
         .how-grid { max-width: 1300px; margin: 0 auto; padding: 0 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .how-text h2 { font-size: 3rem; margin-bottom: 20px; color: var(--bg-alt); }
@@ -166,28 +203,24 @@
         .step h4 { font-size: 1.2rem; margin-bottom: 5px; color: var(--bg-alt); }
         .step p { color: #A0A5B0; font-size: 0.95rem; }
 
-        /* --- GALLERY --- */
         .gallery { padding: 120px 0; background: var(--bg-body); }
         .gallery-grid { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 0 25px; }
         .g-item { border-radius: 4px; overflow: hidden; position: relative; height: 350px; cursor: pointer;}
         .g-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; filter: brightness(0.9); }
         .g-item:hover img { transform: scale(1.08); filter: brightness(1); }
         .g-item.large { grid-column: span 2; }
-        .g-item .overlay-text { position: absolute; bottom: 20px; left: 20px; color: white; font-size: 1.2rem; font-weight: 500; text-shadow: 0 2px 4px rgba(0,0,0,0.5); opacity: 0; transition: var(--transition); transform: translateY(10px); }
+        .g-item .overlay-text { position: absolute; bottom: 20px; left: 20px; color: white; font-size: 1.2rem; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,0.5); opacity: 0; transition: var(--transition); transform: translateY(10px); }
         .g-item:hover .overlay-text { opacity: 1; transform: translateY(0); }
 
-        /* --- CTA BANNER --- */
         .cta-banner { max-width: 1200px; margin: -60px auto 60px; background: var(--bg-alt); border-radius: 8px; padding: 60px 80px; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-md); position: relative; z-index: 10; border: 1px solid var(--border-color); }
         .cta-banner h2 { color: var(--primary); font-size: 2.2rem; margin-bottom: 10px; }
         .cta-banner p { color: var(--text-light); font-size: 1.1rem; }
 
-        /* --- WHATSAPP FLOAT --- */
         .float-wa { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); z-index: 9999; transition: var(--transition); text-decoration: none;}
         .float-wa:hover { transform: scale(1.1); background: #20b858; color: white; }
         .float-wa::before { content: ''; position: absolute; width: 100%; height: 100%; background: inherit; border-radius: inherit; z-index: -1; animation: pulse 2s ease-out infinite; }
         @keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.5); opacity: 0; } }
 
-        /* --- FOOTER --- */
         footer { background: var(--primary); color: var(--bg-alt); padding: 100px 0 30px; margin-top: 50px; }
         .footer-grid { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; padding: 0 25px 60px; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .footer-logo { font-size: 1.6rem; font-weight: 700; color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 10px; margin-bottom: 25px;}
@@ -204,12 +237,10 @@
         .footer-contact i { color: var(--accent); font-size: 1.2rem; margin-top: 3px;}
         .copyright { text-align: center; color: #666; font-size: 0.9rem; padding-top: 30px; letter-spacing: 1px;}
 
-        /* --- REVEAL ANIMATIONS --- */
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; }
 
-        /* --- RESPONSIVIDADE MOBILE --- */
         @media (max-width: 1024px) {
             .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 40px;}
             .hero-text h1 { font-size: 3.5rem; }
@@ -217,6 +248,10 @@
             .hero-img-box { text-align: center; }
             .hero-img-box img { max-width: 100%; border-radius: 8px; }
             .floating-badge { left: 20px; bottom: 20px; }
+            
+            .bento-grid { grid-template-columns: 1fr 1fr; }
+            .bento-large { grid-column: span 2; }
+            
             .how-grid { grid-template-columns: 1fr; gap: 40px;}
             .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
             .cta-banner { flex-direction: column; text-align: center; gap: 30px; padding: 40px; }
@@ -224,8 +259,6 @@
 
         @media (max-width: 768px) {
             .top-bar { display: none; }
-            
-            /* Ajustes Mobile Menu */
             .mobile-toggle { display: block; z-index: 2001; }
             .nav-links { 
                 position: fixed; top: 0; right: -100%; width: 80%; height: 100vh; background: var(--bg-alt);
@@ -238,17 +271,22 @@
             .hero { padding: 50px 0; }
             .hero-text h1 { font-size: 2.8rem; }
             .stat-item h3 { font-size: 2.2rem; }
+            
+            .bento-grid { grid-template-columns: 1fr; }
+            .bento-large { grid-column: span 1; }
+            .bento-card { padding: 35px; }
+            .bento-arrow { bottom: 25px; right: 25px; }
+            
             .gallery-grid { grid-template-columns: 1fr; }
             .g-item.large { grid-column: span 1; }
             .footer-grid { grid-template-columns: 1fr; text-align: center; }
             .footer-logo, .footer-contact li, .footer-socials { justify-content: center; }
-            .floating-badge { display: none; } /* Ocultar badge no mobile pequeno para não poluir a foto */
+            .floating-badge { display: none; } 
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Bar Elegante -->
     <div class="top-bar">
         <div class="top-bar-inner">
             <div><i class="fas fa-map-marker-alt"></i> Edifício Prime, São Paulo - SP</div>
@@ -259,7 +297,6 @@
         </div>
     </div>
 
-    <!-- Header com Menu Hambúrguer -->
     <header id="header">
         <nav class="nav-container">
             <a href="#" class="logo">
@@ -269,11 +306,10 @@
             
             <ul class="nav-links" id="nav-links">
                 <li><a href="#home">Início</a></li>
-                <li><a href="#servicos">Especialidades</a></li>
-                <li><a href="#metodo">O Método</a></li>
-                <li><a href="#consultorio">O Espaço</a></li>
-                <!-- Botão CTA dentro do menu no mobile, fora no desktop -->
-                <a href="https://wa.me/5500000000000" class="btn-cta">Agendar Avaliação</a>
+                <li><a href="#servicos">Tratamentos</a></li>
+                <li><a href="#metodo">Atendimento</a></li>
+                <li><a href="#consultorio">A Clínica</a></li>
+                <a href="https://wa.me/5500000000000" class="btn-cta">Agendar Consulta</a>
             </ul>
             
             <div class="mobile-toggle" id="mobile-toggle">
@@ -285,21 +321,21 @@
     <section class="hero" id="home">
         <div class="hero-grid">
             <div class="hero-text reveal">
-                <span class="hero-tag">Odontologia de Excelência</span>
-                <h1>A arte de criar um sorriso <span>inesquecível.</span></h1>
-                <p>Equipamentos digitais, protocolos internacionais e um ambiente planejado exclusivamente para a sua tranquilidade e resultados estéticos de alto padrão.</p>
+                <span class="hero-tag">Acolhimento & Excelência</span>
+                <h1>Transforme seu sorriso com um atendimento <span>humanizado.</span></h1>
+                <p>Entendemos que ir ao dentista pode gerar ansiedade para muitos. Por isso, aliamos tecnologia de ponta a um ambiente pensado exclusivamente para o seu conforto, garantindo tranquilidade em cada passo do seu tratamento.</p>
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                    <a href="https://wa.me/5500000000000" class="btn-cta">Iniciar Tratamento</a>
+                    <a href="https://wa.me/5500000000000" class="btn-cta">Marque sua Avaliação</a>
                 </div>
             </div>
 
             <div class="hero-img-box reveal delay-1">
                 <img src="dentista bernal.png" alt="Dr. Bernal - Especialista">
                 <div class="floating-badge">
-                    <div class="badge-icon"><i class="fas fa-award"></i></div>
+                    <div class="badge-icon"><i class="fas fa-heart"></i></div>
                     <div class="badge-text">
-                        <h4>Dr. Bernal</h4>
-                        <p>Especialista Referência</p>
+                        <h4>Bem-estar</h4>
+                        <p>Sua saúde em 1º lugar</p>
                     </div>
                 </div>
             </div>
@@ -310,75 +346,128 @@
         <div class="stats-grid">
             <div class="stat-item">
                 <h3>500<span>+</span></h3>
-                <p>Pacientes Felizes</p>
+                <p>Sorrisos Transformados</p>
             </div>
             <div class="stat-item">
                 <h3>15<span>+</span></h3>
-                <p>Anos de Experiência</p>
+                <p>Anos Cuidando de Você</p>
             </div>
             <div class="stat-item">
                 <h3>100<span>%</span></h3>
-                <p>Odontologia Digital</p>
+                <p>Ambiente Acolhedor</p>
             </div>
         </div>
     </section>
 
+    <!-- INÍCIO: NOVOS COMPONENTES (MARQUEE & BENTO BOX) -->
+    
+    <div class="marquee-container reveal">
+        <div class="marquee-content">
+            <span><i class="fas fa-certificate"></i> Odontologia Digital Integrada</span>
+            <span><i class="fas fa-certificate"></i> Conforto e Zero Ansiedade</span>
+            <span><i class="fas fa-certificate"></i> Previsibilidade de Resultados</span>
+            <span><i class="fas fa-certificate"></i> Atendimento Humanizado</span>
+            <span><i class="fas fa-certificate"></i> Odontologia Digital Integrada</span>
+            <span><i class="fas fa-certificate"></i> Conforto e Zero Ansiedade</span>
+            <span><i class="fas fa-certificate"></i> Previsibilidade de Resultados</span>
+            <span><i class="fas fa-certificate"></i> Atendimento Humanizado</span>
+        </div>
+    </div>
+
+    <section class="bento-section">
+        <div class="section-header reveal">
+            <h2>Alta Performance</h2>
+            <p>Os pilares da nossa clínica que garantem uma experiência muito superior à odontologia tradicional.</p>
+        </div>
+        
+        <div class="bento-grid">
+            <div class="bento-card bento-large reveal delay-1">
+                <span class="bento-tag">Tecnologia 3D</span>
+                <h3 class="bento-title">Adeus Aos Moldes Desconfortáveis</h3>
+                <p class="bento-text">Utilizamos escaneamento intraoral de altíssima precisão. Em poucos minutos, criamos uma cópia tridimensional perfeita da sua boca. Fim daquela massa com gosto ruim e moldes 100% fiéis para um planejamento impecável.</p>
+                <div class="bento-arrow"><i class="fas fa-arrow-right"></i></div>
+            </div>
+            
+            <div class="bento-card reveal delay-2">
+                <span class="bento-tag">Biossegurança</span>
+                <h3 class="bento-title">Protocolo Rigoroso</h3>
+                <p class="bento-text">Esterilização nível hospitalar para a sua total proteção e tranquilidade.</p>
+                <div class="bento-arrow"><i class="fas fa-arrow-right"></i></div>
+            </div>
+            
+            <div class="bento-card reveal delay-1">
+                <span class="bento-tag">Design do Sorriso</span>
+                <h3 class="bento-title">Visão Antecipada</h3>
+                <p class="bento-text">Teste o seu novo sorriso no próprio rosto antes de aprová-lo em definitivo.</p>
+                <div class="bento-arrow"><i class="fas fa-arrow-right"></i></div>
+            </div>
+            
+            <div class="bento-card bento-large reveal delay-2">
+                <span class="bento-tag">Conforto e Spa</span>
+                <h3 class="bento-title">Uma Experiência Sem Medo</h3>
+                <p class="bento-text">Sabemos que o ambiente clínico causa tensão. Nossas salas são equipadas com recursos de relaxamento e controle de ansiedade para que sua consulta seja um momento de verdadeiro autocuidado.</p>
+                <div class="bento-arrow"><i class="fas fa-arrow-right"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FIM: NOVOS COMPONENTES -->
+
     <section id="servicos" class="services">
         <div class="section-header reveal">
-            <h2>Protocolos Estéticos</h2>
-            <p>Procedimentos personalizados que unem ciência e simetria para o seu rosto.</p>
+            <h2>Nossas Soluções</h2>
+            <p>Oferecemos uma ampla variedade de tratamentos com a mais alta tecnologia e um cuidado pensado inteiramente na sua satisfação.</p>
         </div>
 
         <div class="services-grid">
             <div class="card reveal">
                 <div class="card-icon"><i class="fas fa-gem"></i></div>
-                <h3>Lentes em Porcelana</h3>
-                <p>Facetas ultrafinas de alta durabilidade projetadas digitalmente para transformar formato, cor e alinhamento dos seus dentes em poucos dias.</p>
+                <h3>Estética e Lentes</h3>
+                <p>Procedimentos estéticos minimamente invasivos que visam a sua saúde bucal, tornando o processo de cuidar do seu sorriso uma experiência leve e descomplicada.</p>
                 <a href="#" class="card-link">Saber mais <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="card reveal delay-1">
                 <div class="card-icon"><i class="fas fa-microscope"></i></div>
-                <h3>Implantes Guiados</h3>
-                <p>Cirurgia virtualmente planejada. Maior previsibilidade, zero cortes com bisturi convencional e um pós-operatório livre de dor.</p>
+                <h3>Implantes e Reabilitação</h3>
+                <p>Redescubra o prazer de comer e sorrir com segurança. Soluções modernas e guiadas digitalmente para quem busca conforto, estética e facilidade de manutenção.</p>
                 <a href="#" class="card-link">Saber mais <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="card reveal delay-2">
                 <div class="card-icon"><i class="fas fa-magic"></i></div>
-                <h3>Alinhadores Invisíveis</h3>
-                <p>Aparelhos transparentes e removíveis. Corrija seu sorriso com total discrição, mantendo seu estilo de vida sem interrupções.</p>
+                <h3>Ortodontia e Invisalign</h3>
+                <p>Corrija a posição dos dentes com discrição e conforto. Mais harmonia para o seu rosto, além de prevenir problemas futuros e melhorar sua mastigação.</p>
                 <a href="#" class="card-link">Saber mais <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
 
-    <!-- NOVA SEÇÃO: COMO FUNCIONA (Inspiração da Referência) -->
     <section id="metodo" class="how-it-works">
         <div class="how-grid">
             <div class="how-text reveal">
-                <h2>Como Funciona a Nossa Abordagem</h2>
-                <p>Desenvolvemos uma jornada de atendimento pensada para minimizar a ansiedade e maximizar a previsibilidade dos resultados.</p>
-                <a href="https://wa.me/5500000000000" class="btn-cta" style="background: var(--bg-alt); color: var(--primary);">Agendar Consulta</a>
+                <h2>Sua Experiência é a Nossa Prioridade</h2>
+                <p>Nossa paixão pela odontologia reflete em cada etapa da sua visita. Desenhamos um processo claro e indolor para que você se sinta sempre seguro conosco.</p>
+                <a href="https://wa.me/5500000000000" class="btn-cta" style="background: var(--accent); color: var(--primary);">Falar com a Equipe</a>
             </div>
             <div class="how-steps reveal delay-1">
                 <div class="step">
                     <div class="step-num">1</div>
                     <div>
-                        <h4>Consulta e Escaneamento 3D</h4>
-                        <p>Avaliamos sua saúde bucal e fazemos um molde digital perfeito da sua boca na primeira sessão, sem massas desconfortáveis.</p>
+                        <h4>Acolhimento e Diagnóstico</h4>
+                        <p>Ouvimos com atenção as suas queixas e desejos, realizando exames precisos sem pressa, respeitando o seu tempo.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-num">2</div>
                     <div>
-                        <h4>Planejamento Digital (Mockup)</h4>
-                        <p>Desenhamos o seu novo sorriso no computador e você pode prová-lo em resina antes de qualquer procedimento definitivo.</p>
+                        <h4>Planejamento Transparente</h4>
+                        <p>Apresentamos todas as opções de tratamento de forma clara, tirando todas as suas dúvidas antes de iniciarmos qualquer passo.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-num">3</div>
                     <div>
-                        <h4>Execução com Precisão</h4>
-                        <p>Tratamento rápido e indolor, entregando exatamente o resultado que foi aprovado por você na fase de planejamento.</p>
+                        <h4>Tratamento e Prevenção</h4>
+                        <p>Cuidamos do seu sorriso com técnicas modernas que aliviam qualquer desconforto, sempre focando na manutenção preventiva da sua saúde.</p>
                     </div>
                 </div>
             </div>
@@ -387,41 +476,40 @@
 
     <section id="consultorio" class="gallery">
         <div class="section-header reveal">
-            <h2>Um Espaço Pensado Para Você</h2>
-            <p>Conforto de hotel boutique com tecnologia de ponta odontológica.</p>
+            <h2>Ótima Infraestrutura</h2>
+            <p>Sabemos que o ambiente importa. Criamos uma clínica moderna e confortável para você se sentir em casa.</p>
         </div>
         
         <div class="gallery-grid reveal delay-1">
             <div class="g-item large">
                 <img src="consultorio.jpg" alt="Recepção">
-                <div class="overlay-text">Recepção Aconchegante</div>
+                <div class="overlay-text">Recepção Acolhedora</div>
             </div>
             <div class="g-item">
                 <img src="sorriso.jpg" alt="Paciente Feliz">
-                <div class="overlay-text">Atendimento Humanizado</div>
+                <div class="overlay-text">Sorrisos Reais</div>
             </div>
             <div class="g-item">
                 <img src="gallery-image-2-small.jpg" alt="Equipamentos">
-                <div class="overlay-text">Tecnologia Digital</div>
+                <div class="overlay-text">Equipamentos Atuais</div>
             </div>
             <div class="g-item">
                 <img src="gallery-image-3-small.jpg" alt="Sala de Atendimento">
-                <div class="overlay-text">Salas Clínicas Premium</div>
+                <div class="overlay-text">Salas Tranquilas</div>
             </div>
             <div class="g-item">
                 <img src="gallery-image-4-small.jpg" alt="Detalhes">
-                <div class="overlay-text">Biossegurança Rigorosa</div>
+                <div class="overlay-text">Higiene Impecável</div>
             </div>
         </div>
     </section>
 
-    <!-- Banner CTA -->
     <div class="cta-banner reveal">
         <div>
-            <h2>Pronto para elevar sua autoestima?</h2>
-            <p>Sua transformação começa com um diagnóstico preciso.</p>
+            <h2>Queremos cuidar de você</h2>
+            <p>Agende sua consulta com nossos especialistas e inicie a transformação do seu sorriso hoje mesmo!</p>
         </div>
-        <a href="https://wa.me/5500000000000" class="btn-cta">Agendar Agora</a>
+        <a href="https://wa.me/5500000000000" class="btn-cta" style="background: var(--primary); color: var(--accent);">Agendar Avaliação</a>
     </div>
 
     <footer>
@@ -430,7 +518,7 @@
                 <a href="#" class="footer-logo">
                     <i class="fas fa-tooth"></i> Dr. Bernal
                 </a>
-                <p class="footer-text">Nossa missão é alinhar a saúde perfeita com a estética incomparável. Odontologia feita com arte, ciência e exclusividade.</p>
+                <p class="footer-text">Nascida da paixão por transformar sorrisos, a clínica Dr. Bernal alia alta capacitação, tecnologia e um atendimento humano para cuidar de toda a sua família.</p>
                 <div class="footer-socials">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -442,19 +530,18 @@
                 <h4 class="footer-title">Institucional</h4>
                 <ul class="footer-links">
                     <li><a href="#home">Início</a></li>
-                    <li><a href="#metodo">O Método</a></li>
-                    <li><a href="#consultorio">O Espaço</a></li>
-                    <li><a href="#">Privacidade</a></li>
+                    <li><a href="#metodo">Como Funciona</a></li>
+                    <li><a href="#consultorio">Nossa Infraestrutura</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="footer-title">Especialidades</h4>
+                <h4 class="footer-title">Serviços</h4>
                 <ul class="footer-links">
-                    <li><a href="#">Lentes em Porcelana</a></li>
-                    <li><a href="#">Implantes Dentários</a></li>
+                    <li><a href="#">Estética Dental</a></li>
+                    <li><a href="#">Implantes e Próteses</a></li>
+                    <li><a href="#">Prevenção e Limpeza</a></li>
                     <li><a href="#">Invisalign</a></li>
-                    <li><a href="#">Reabilitação Oral</a></li>
                 </ul>
             </div>
 
@@ -477,13 +564,11 @@
         </div>
     </footer>
 
-    <!-- Botão Fixo WhatsApp -->
     <a href="https://wa.me/5500000000000" target="_blank" class="float-wa">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
-        // Lógica do Menu Mobile (Hambúrguer)
         const mobileToggle = document.getElementById('mobile-toggle');
         const navLinks = document.getElementById('nav-links');
         const menuIcon = mobileToggle.querySelector('i');
@@ -499,7 +584,6 @@
             }
         });
 
-        // Fechar menu ao clicar em um link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -508,14 +592,12 @@
             });
         });
 
-        // Efeito do Header no Scroll (Glassmorphism)
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) header.classList.add('scrolled');
             else header.classList.remove('scrolled');
         });
 
-        // Scroll Reveal Animations
         const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
