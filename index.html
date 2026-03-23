@@ -83,40 +83,112 @@
 
         .mobile-toggle { display: none; font-size: 1.5rem; color: var(--primary); }
 
-        /* --- HERO --- */
-        .hero { padding: 90px 0 110px; position: relative; background: var(--bg-body); overflow: hidden; }
-        .hero::before {
-            content: ''; position: absolute; top: -10%; right: -5%; width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(138, 199, 158, 0.15) 0%, transparent 70%); border-radius: 50%; z-index: 0;
+        /* --- NOVA HERO CINEMÁTICA ESTILO VÍDEO --- */
+        .hero-cinematic {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            /* Usando a imagem real enviada com as lupas */
+            background: url('SaveClip.App_470673618_17952604373910304_718808670163027750_n.jpg') center/cover no-repeat;
+            overflow: hidden;
         }
 
-        .hero-grid {
-            max-width: 1300px; margin: 0 auto; padding: 0 25px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; position: relative; z-index: 1;
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* Overlay que escurece muito a esquerda para o texto e deixa a foto visível na direita */
+            background: linear-gradient(90deg, rgba(26,28,32,0.98) 0%, rgba(26,28,32,0.8) 50%, rgba(26,28,32,0.3) 100%);
+            z-index: 1;
         }
 
-        .hero-tag {
-            display: inline-block; padding: 6px 15px; border: 1px solid var(--accent); color: var(--accent);
-            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; font-weight: 700;
+        .hero-cinematic-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 25px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            width: 100%;
         }
 
-        .hero-text h1 { font-size: 4.2rem; font-weight: 600; line-height: 1.1; margin-bottom: 25px; color: var(--primary); }
-        .hero-text h1 span { font-style: italic; color: var(--accent); font-weight: 600;}
-        .hero-text p { font-size: 1.15rem; color: var(--text-light); margin-bottom: 45px; max-width: 500px; }
-
-        .hero-img-box { position: relative; text-align: right; }
-        .hero-img-box img {
-            width: 95%; max-width: 500px; border-radius: 8px; box-shadow: var(--shadow-md); object-fit: cover;
+        .hero-text-dark h1 {
+            font-size: 4.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            font-family: 'Playfair Display', serif;
         }
 
-        .floating-badge {
-            position: absolute; bottom: 30px; left: -40px; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px);
-            padding: 20px 25px; border-radius: 8px; box-shadow: var(--shadow-md); display: flex; align-items: center; gap: 15px;
-            border-left: 4px solid var(--accent); animation: float 4s ease-in-out infinite;
+        .hero-text-dark p {
+            font-size: 1.15rem;
+            color: #D1D5DB;
+            margin-bottom: 45px;
+            max-width: 480px;
         }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .badge-icon { color: var(--accent); font-size: 2rem; }
-        .badge-text h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.2rem; color: var(--primary); font-weight: 700; margin-bottom: 2px;}
-        .badge-text p { font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px;}
+
+        /* Wrapper da Lista Vertical com o Efeito de Máscara (Fade Top e Bottom) */
+        .hero-benefits-wrapper {
+            height: 380px;
+            overflow: hidden;
+            position: relative;
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+        }
+
+        .hero-benefits-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            animation: scrollVerticalList 18s linear infinite;
+        }
+
+        .hero-benefits-list:hover {
+            animation-play-state: paused; /* Bônus de UX: Pausa se o usuário passar o mouse para ler */
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            padding: 18px 25px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            background: rgba(138, 199, 158, 0.1);
+            border-color: var(--accent);
+        }
+
+        .benefit-item i { color: var(--accent); font-size: 1.2rem; }
+
+        @keyframes scrollVerticalList {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 1024px) {
+            .hero-cinematic-grid { grid-template-columns: 1fr; text-align: center; gap: 40px;}
+            .hero-text-dark h1 { font-size: 3.2rem; }
+            .hero-text-dark p { margin: 0 auto 30px; }
+            .hero-overlay { background: rgba(26,28,32,0.85); }
+            .hero-benefits-wrapper { display: none; } /* Omitimos no mobile para foco direto no botão */
+        }
 
         /* --- STATS ANIMADOS --- */
         .stats-wrapper { background: var(--bg-alt); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
@@ -176,7 +248,7 @@
             background: var(--primary); color: var(--accent); transform: rotate(-45deg); border-color: var(--primary);
         }
 
-        /* --- SERVIÇOS E SLIDE-UP HOVER (REF: VÍDEO 00:05) --- */
+        /* --- SERVIÇOS E SLIDE-UP HOVER --- */
         .services { padding: 120px 0; background: var(--bg-body); }
         .section-header { text-align: center; margin-bottom: 70px; max-width: 700px; margin-left: auto; margin-right: auto; padding: 0 20px;}
         .section-header h2 { font-size: 3.2rem; color: var(--primary); margin-bottom: 20px; }
@@ -196,7 +268,6 @@
         .card h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; color: var(--primary); }
         .card p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 0; }
         
-        /* A Mágica do Hover Slide-up */
         .card .card-link {
             position: absolute; bottom: 0; left: 0; width: 100%; height: 70px;
             background: var(--primary); color: var(--accent); text-decoration: none;
@@ -273,20 +344,6 @@
         }
 
         /* --- RESPONSIVIDADE --- */
-        @media (max-width: 1024px) {
-            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 40px;}
-            .hero-text h1 { font-size: 3.5rem; }
-            .hero-text p { margin: 0 auto 30px; }
-            .hero-img-box { text-align: center; }
-            .hero-img-box img { max-width: 100%; border-radius: 8px; }
-            .floating-badge { left: 20px; bottom: 20px; }
-            .bento-grid { grid-template-columns: 1fr 1fr; }
-            .bento-large { grid-column: span 2; }
-            .how-grid { grid-template-columns: 1fr; gap: 40px;}
-            .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
-            .cta-banner { flex-direction: column; text-align: center; gap: 30px; padding: 40px; }
-        }
-
         @media (max-width: 768px) {
             .top-bar { display: none; }
             .mobile-toggle { display: block; z-index: 2001; cursor: pointer; }
@@ -298,117 +355,6 @@
             .nav-links.active { right: 0; }
             .nav-links .btn-cta { margin-top: 20px; }
 
-            .hero { padding: 50px 0; }
-            .hero-text h1 { font-size: 2.8rem; }
-
-/* --- NOVA HERO CINEMÁTICA ESTILO VÍDEO --- */
-.hero-cinematic {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    min-height: 700px;
-    display: flex;
-    align-items: center;
-    /* Usando a imagem real enviada com as lupas */
-    background: url('SaveClip.App_470673618_17952604373910304_718808670163027750_n.jpg') center/cover no-repeat;
-    overflow: hidden;
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    /* Overlay que escurece muito a esquerda para o texto e deixa a foto visível na direita */
-    background: linear-gradient(90deg, rgba(26,28,32,0.98) 0%, rgba(26,28,32,0.8) 50%, rgba(26,28,32,0.3) 100%);
-    z-index: 1;
-}
-
-.hero-cinematic-grid {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 25px;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 60px;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-    width: 100%;
-}
-
-.hero-text-dark h1 {
-    font-size: 4.5rem;
-    font-weight: 600;
-    color: #ffffff;
-    line-height: 1.1;
-    margin-bottom: 25px;
-    font-family: 'Playfair Display', serif;
-}
-
-.hero-text-dark p {
-    font-size: 1.15rem;
-    color: #D1D5DB;
-    margin-bottom: 45px;
-    max-width: 480px;
-}
-
-/* Wrapper da Lista Vertical com o Efeito de Máscara (Fade Top e Bottom) */
-.hero-benefits-wrapper {
-    height: 380px;
-    overflow: hidden;
-    position: relative;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-}
-
-.hero-benefits-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    animation: scrollVerticalList 18s linear infinite;
-}
-
-.hero-benefits-list:hover {
-    animation-play-state: paused; /* Bônus de UX: Pausa se o usuário passar o mouse para ler */
-}
-
-.benefit-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(8px);
-    padding: 18px 25px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #ffffff;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.benefit-item:hover {
-    background: rgba(138, 199, 158, 0.1);
-    border-color: var(--accent);
-}
-
-.benefit-item i { color: var(--accent); font-size: 1.2rem; }
-
-@keyframes scrollVerticalList {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-50%); }
-}
-
-/* Mobile Adjustments */
-@media (max-width: 1024px) {
-    .hero-cinematic-grid { grid-template-columns: 1fr; text-align: center; gap: 40px;}
-    .hero-text-dark h1 { font-size: 3.2rem; }
-    .hero-text-dark p { margin: 0 auto 30px; }
-    .hero-overlay { background: rgba(26,28,32,0.85); }
-    .hero-benefits-wrapper { display: none; } /* Omitimos no mobile para foco direto no botão */
-}
-
-            
             .bento-grid { grid-template-columns: 1fr; }
             .bento-large { grid-column: span 1; }
             .bento-card { padding: 35px; }
@@ -418,7 +364,6 @@
             .g-item.large { grid-column: span 1; }
             .footer-grid { grid-template-columns: 1fr; text-align: center; }
             .footer-logo, .footer-contact li, .footer-socials { justify-content: center; }
-            .floating-badge { display: none; } 
         }
     </style>
 </head>
@@ -455,40 +400,39 @@
         </nav>
     </header>
 
-   <section class="hero-cinematic" id="home">
-    <div class="hero-overlay"></div>
-    <div class="hero-cinematic-grid">
-        <div class="hero-text-dark reveal">
-            <h1>Odontologia<br><span style="color: var(--accent); font-style: italic;">Exclusiva</span></h1>
-            <p>Aliamos tecnologia de ponta e precisão clínica a um ambiente pensado inteiramente para o seu conforto, previsibilidade e bem-estar.</p>
-            <a href="https://wa.me/5500000000000" class="btn-cta">Agendar Avaliação</a>
-        </div>
-        
-        <div class="hero-benefits-wrapper reveal delay-1">
-            <div class="hero-benefits-list">
-                <!-- Itens da Lista -->
-                <div class="benefit-item"><i class="fas fa-check"></i> Otimização de Sorrisos</div>
-                <div class="benefit-item"><i class="fas fa-check"></i> Atendimento Humanizado</div>
-                <div class="benefit-item"><i class="fas fa-check"></i> Tecnologia 3D Avançada</div>
-                <div class="benefit-item"><i class="fas fa-check"></i> Protocolo Zero Ansiedade</div>
-                <div class="benefit-item"><i class="fas fa-check"></i> Previsibilidade Estética</div>
-                <!-- Itens Duplicados (Necessário para a ilusão do scroll infinito não ter quebras) -->
-                <div class="benefit-item"><i class="fas fa-check"></i> Otimização de Sorrisos</div>
-                <div class="benefit-item"><i class="fas fa-check"></i> Atendimento Humanizado</div>
-                <div class="benefit-item"><i class="fas fa-check"></i> Tecnologia 3D Avançada</div>
-                <div class="benefit-item"><i class="fas fa-check"></i> Protocolo Zero Ansiedade</div>
-                <div class="benefit-item"><i class="fas fa-check"></i> Previsibilidade Estética</div>
+    <section class="hero-cinematic" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-cinematic-grid">
+            <div class="hero-text-dark reveal">
+                <h1>Odontologia<br><span style="color: var(--accent); font-style: italic;">Exclusiva</span></h1>
+                <p>Aliamos tecnologia de ponta e precisão clínica a um ambiente pensado inteiramente para o seu conforto, previsibilidade e bem-estar.</p>
+                <a href="https://wa.me/5500000000000" class="btn-cta">Agendar Avaliação</a>
+            </div>
+            
+            <div class="hero-benefits-wrapper reveal delay-1">
+                <div class="hero-benefits-list">
+                    <!-- Itens da Lista -->
+                    <div class="benefit-item"><i class="fas fa-check"></i> Otimização de Sorrisos</div>
+                    <div class="benefit-item"><i class="fas fa-check"></i> Atendimento Humanizado</div>
+                    <div class="benefit-item"><i class="fas fa-check"></i> Tecnologia 3D Avançada</div>
+                    <div class="benefit-item"><i class="fas fa-check"></i> Protocolo Zero Ansiedade</div>
+                    <div class="benefit-item"><i class="fas fa-check"></i> Previsibilidade Estética</div>
+                    <!-- Itens Duplicados (Necessário para a ilusão do scroll infinito não ter quebras) -->
+                    <div class="benefit-item"><i class="fas fa-check"></i> Otimização de Sorrisos</div>
+                    <div class="benefit-item"><i class="fas fa-check"></i> Atendimento Humanizado</div>
+                    <div class="benefit-item"><i class="fas fa-check"></i> Tecnologia 3D Avançada</div>
+                    <div class="benefit-item"><i class="fas fa-check"></i> Protocolo Zero Ansiedade</div>
+                    <div class="benefit-item"><i class="fas fa-check"></i> Previsibilidade Estética</div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <section class="stats-wrapper reveal">
         <div class="stats-grid">
             <div class="stat-item">
                 <h3 class="counter">0<span>+</span></h3>
                 <p>Sorrisos Transformados</p>
-                <!-- O HTML inicia com 0, o JS fará subir para 500 -->
                 <span class="hidden-target" style="display:none;">500</span> 
             </div>
             <div class="stat-item">
@@ -711,7 +655,6 @@
 
     <!-- SCRIPTS -->
     <script>
-        // Menu Mobile (Hamburger)
         const mobileToggle = document.getElementById('mobile-toggle');
         const navLinks = document.getElementById('nav-links');
         const menuIcon = mobileToggle.querySelector('i');
@@ -735,14 +678,12 @@
             });
         });
 
-        // Efeito Header Scrolled
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) header.classList.add('scrolled');
             else header.classList.remove('scrolled');
         });
 
-        // Scroll Reveal Animations
         const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -755,7 +696,6 @@
 
         revealElements.forEach(el => revealObserver.observe(el));
 
-        // Cursor Personalizado e Magnético
         if (window.matchMedia("(pointer: fine)").matches) {
             const cursor = document.createElement('div');
             cursor.classList.add('custom-cursor');
@@ -772,14 +712,13 @@
             function animateCursor() {
                 let dx = mouseX - cursorX;
                 let dy = mouseY - cursorY;
-                cursorX += dx * 0.15; // Velocidade do rastro
+                cursorX += dx * 0.15;
                 cursorY += dy * 0.15;
                 cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
                 requestAnimationFrame(animateCursor);
             }
             animateCursor();
 
-            // Interação do cursor ao passar em elementos clicáveis
             const interactives = document.querySelectorAll('a, button, .card, .bento-card, .g-item, .mobile-toggle');
             interactives.forEach(el => {
                 el.addEventListener('mouseenter', () => cursor.classList.add('cursor-grow'));
@@ -787,7 +726,6 @@
             });
         }
 
-        // Contador Animado de Números
         const statItemsContainers = document.querySelectorAll('.stat-item');
         let hasCounted = false;
 
