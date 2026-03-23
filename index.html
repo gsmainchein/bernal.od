@@ -84,8 +84,20 @@
             min-height: 700px;
             display: flex;
             align-items: center;
-            background: url('SaveClip.App_470673618_17952604373910304_718808670163027750_n.jpg') center/cover no-repeat;
             overflow: hidden;
+            background: var(--primary); /* Cor de fallback antes do vídeo carregar */
+        }
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            object-fit: cover;
         }
         .hero-overlay {
             position: absolute;
@@ -431,6 +443,11 @@
 
     <!-- NOVA HERO SECTION ESTILO VÍDEO -->
     <section class="hero-cinematic" id="home">
+        <!-- VÍDEO NO FUNDO - Lembre-se de subir o arquivo MP4 para o seu GitHub! Adicionei um "poster" para não ficar preto enquanto carrega -->
+        <video autoplay muted loop playsinline class="hero-video" poster="nano-trabalho.png">
+            <source src="SaveClip.App_AQPLt63E4Bscx9Gdx4Q0MimCM3Zpsu7PQdf98twL7xdZa9TjWByfyZOpf4AeEKAg36Z2WU2wvFLF-idFy7RV0v6QwJtf5_lGs3fjgjE.mp4" type="video/mp4">
+        </video>
+        
         <div class="hero-overlay"></div>
         <div class="hero-cinematic-grid">
             <div class="hero-text-dark reveal">
@@ -495,8 +512,8 @@
     <section class="sobre-especialista reveal" id="sobre">
         <div class="sobre-grid">
             <div class="sobre-img-box parallax-container reveal delay-1">
-                <!-- Usando a foto do dentista com a criança com Parallax -->
-                <img src="SaveClip.App_470676878_17952604292910304_739642340284297067_n.jpg" alt="Dr. Bernal com paciente" class="parallax-img">
+                <!-- Alterado para o nome real da foto no seu GitHub -->
+                <img src="nano-dentista.png" alt="Dr. Bernal com paciente" class="parallax-img">
             </div>
             <div class="sobre-text reveal">
                 <span class="hero-tag">O Especialista</span>
@@ -613,8 +630,8 @@
         
         <div class="gallery-grid reveal delay-1">
             <div class="g-item large parallax-container">
-                <!-- Imagem do dentista trabalhando -->
-                <img src="SaveClip.App_470873894_17952604460910304_3716978084206232512_n.jpg" alt="Atendimento com Precisão" class="parallax-img">
+                <!-- Alterado para o nome real da foto no seu GitHub -->
+                <img src="nano-operando.png" alt="Atendimento com Precisão" class="parallax-img">
                 <div class="overlay-text">Precisão Clínica</div>
             </div>
             <div class="g-item parallax-container">
@@ -644,7 +661,7 @@
             <a href="https://wa.me/5500000000000" class="btn-cta" style="background: var(--primary); color: var(--accent);">Agendar Avaliação</a>
         </div>
         <div class="cta-img">
-            <!-- Foto recortada de braços cruzados -->
+            <!-- Foto recortada de braços cruzados que já está no seu GitHub -->
             <img src="dentista bernal.png" alt="Dr. Bernal Especialista">
         </div>
     </div>
