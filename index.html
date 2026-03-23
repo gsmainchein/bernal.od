@@ -5,376 +5,469 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Bernal | Odontologia de Alta Performance</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <!-- Troquei a fonte para Plus Jakarta Sans, que é super moderna, premium e idêntica à vibe da sua imagem de referência -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --primary: #6D5B8E; /* Roxo Bernal */
-            --primary-dark: #4A3B63;
-            --accent: #B8A7D1;
+            /* Paleta de cores baseada na imagem de referência (Profissional, Limpa, Odontológica) */
+            --primary: #0F2A3D; /* Azul Marinho Escuro */
+            --primary-light: #1A4666;
+            --accent: #197B89; /* Teal / Ciano escuro para detalhes */
             --bg-body: #FFFFFF;
-            --bg-alt: #F4F7FF;
-            --text-main: #1A1A1B;
-            --text-light: #64748B;
+            --bg-alt: #F4F7F6; /* Cinza bem clarinho da referência */
+            --text-main: #2D3748;
+            --text-light: #718096;
             --white: #FFFFFF;
-            --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.1);
-            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-color: #E2E8F0;
+            
+            --shadow-sm: 0 4px 10px rgba(0,0,0,0.03);
+            --shadow-md: 0 10px 30px rgba(15, 42, 61, 0.08);
+            --shadow-lg: 0 20px 40px rgba(15, 42, 61, 0.12);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
         html { scroll-behavior: smooth; }
         body { background: var(--bg-body); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
+        /* --- TOP BAR (Como na referência) --- */
+        .top-bar {
+            background: var(--bg-alt);
+            padding: 10px 0;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .top-bar-inner {
+            max-width: 1300px; margin: 0 auto; padding: 0 25px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .top-bar-contact span { margin-right: 20px; font-weight: 500; }
+        .top-bar-contact i { color: var(--accent); margin-right: 5px; }
+
         /* --- HEADER & NAVIGATION --- */
         header {
-            position: fixed;
+            position: sticky;
             top: 0; width: 100%; z-index: 2000;
-            padding: 25px 0; transition: var(--transition);
+            background: var(--white);
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
         }
 
-        header.sticky {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 15px 0;
-            backdrop-filter: blur(15px);
+        header.scrolled {
             box-shadow: var(--shadow-sm);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .nav-container {
             max-width: 1300px; margin: 0 auto;
-            display: flex; justify-content: space-between; align-items: center; padding: 0 25px;
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 20px 25px;
         }
 
-        .logo-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem; font-weight: 900;
-            color: var(--primary); text-decoration: none;
-            letter-spacing: -1px;
-        }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo i { font-size: 2rem; color: var(--primary); }
+        .logo-text { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; }
 
-        .nav-links { display: flex; list-style: none; gap: 40px; align-items: center; }
+        .nav-links { display: flex; list-style: none; gap: 35px; align-items: center; }
         .nav-links a {
             text-decoration: none; color: var(--text-main);
             font-weight: 600; font-size: 0.95rem;
-            transition: var(--transition); position: relative;
+            transition: var(--transition);
         }
-
-        .nav-links a::after {
-            content: ''; position: absolute; bottom: -5px; left: 0;
-            width: 0; height: 2px; background: var(--primary); transition: var(--transition);
-        }
-
-        .nav-links a:hover { color: var(--primary); }
-        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--accent); }
 
         .btn-cta {
             background: var(--primary); color: var(--white);
-            padding: 14px 30px; border-radius: 50px;
-            text-decoration: none; font-weight: 700;
-            box-shadow: 0 4px 15px rgba(109, 91, 142, 0.3);
-            transition: var(--transition);
+            padding: 14px 32px; border-radius: 50px;
+            text-decoration: none; font-weight: 700; font-size: 0.95rem;
+            transition: var(--transition); display: inline-flex; align-items: center; gap: 10px;
         }
-
-        .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(109, 91, 142, 0.4); }
+        .btn-cta:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: var(--shadow-md); color: var(--white);}
 
         /* --- HERO SECTION --- */
         .hero {
-            background: linear-gradient(135deg, #F8FAFF 0%, #EDF2FB 100%);
-            min-height: 100vh; display: flex; align-items: center; position: relative;
-            padding-top: 100px;
+            background: linear-gradient(180deg, var(--bg-alt) 0%, var(--white) 100%);
+            padding: 80px 0 100px; position: relative; overflow: hidden;
         }
 
         .hero-grid {
             max-width: 1300px; margin: 0 auto; padding: 0 25px;
-            display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
         }
 
         .hero-tag {
-            display: inline-block; padding: 8px 20px; background: rgba(109, 91, 142, 0.1);
-            color: var(--primary); border-radius: 50px; font-weight: 800;
-            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px;
+            display: inline-block; padding: 8px 16px; background: rgba(25, 123, 137, 0.1);
+            color: var(--accent); border-radius: 50px; font-weight: 700;
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;
         }
 
         .hero-text h1 {
-            font-family: 'Playfair Display', serif; font-size: 4.5rem;
-            line-height: 1.05; margin-bottom: 30px; color: #0F172A;
+            font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 25px; color: var(--primary); letter-spacing: -1px;
         }
+        .hero-text h1 span { color: var(--accent); }
+        .hero-text p { font-size: 1.1rem; color: var(--text-light); margin-bottom: 40px; max-width: 500px; }
 
-        .hero-text h1 span { color: var(--primary); position: relative; }
-
-        .hero-text p { font-size: 1.2rem; color: var(--text-light); margin-bottom: 40px; max-width: 550px; }
-
-        .hero-img-box { position: relative; }
+        .hero-img-box { position: relative; text-align: right; }
         
-        /* Efeito Dr. Daniel */
-        .doctor-portrait {
-            width: 100%; max-width: 550px; border-radius: 30px;
-            filter: grayscale(100%); transition: filter 1s ease;
-            position: relative; z-index: 5;
+        .hero-img-box img {
+            width: 90%; max-width: 550px; border-radius: 20px 100px 20px 20px;
+            box-shadow: var(--shadow-lg); object-fit: cover;
+            animation: float-img 6s ease-in-out infinite;
         }
 
-        .hero-img-box:hover .doctor-portrait { filter: grayscale(0%); }
-
-        .floating-review {
-            position: absolute; top: 15%; right: -30px;
-            background: var(--white); padding: 25px; border-radius: 20px;
-            box-shadow: var(--shadow-lg); max-width: 260px; z-index: 10;
-            animation: float 5s ease-in-out infinite;
+        @keyframes float-img {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        /* Cartão flutuante estilo a referência */
+        .floating-badge {
+            position: absolute; bottom: 40px; left: -20px;
+            background: var(--white); padding: 20px; border-radius: 15px;
+            box-shadow: var(--shadow-md); display: flex; align-items: center; gap: 15px;
+            animation: float-img 5s ease-in-out infinite reverse;
+        }
+        .badge-icon { background: #E8F5F6; color: var(--accent); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .badge-text h4 { font-size: 1.2rem; color: var(--primary); font-weight: 800; }
+        .badge-text p { font-size: 0.85rem; color: var(--text-light); margin:0; }
 
-        /* --- SERVICES SECTION (image_1f45b3 inspired) --- */
-        .services { padding: 120px 0; background: var(--white); position: relative; }
-        .section-header { text-align: center; margin-bottom: 80px; }
-        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 20px; }
+        /* --- STATS BAR --- */
+        .stats-bar { padding: 40px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .stats-grid { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; padding: 0 25px;}
+        .stat-item { text-align: center; }
+        .stat-item h3 { font-size: 2.5rem; font-weight: 800; color: var(--primary); }
+        .stat-item p { color: var(--text-light); font-weight: 500; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;}
+
+        /* --- SERVICES SECTION --- */
+        .services { padding: 100px 0; background: var(--white); }
+        .section-header { text-align: center; margin-bottom: 60px; max-width: 600px; margin-left: auto; margin-right: auto; padding: 0 20px;}
+        .section-tag { display: inline-block; padding: 6px 15px; background: var(--bg-alt); color: var(--text-main); border-radius: 20px; font-size: 0.85rem; font-weight: 700; margin-bottom: 15px;}
+        .section-header h2 { font-size: 2.8rem; font-weight: 800; color: var(--primary); margin-bottom: 15px; line-height: 1.2;}
 
         .services-grid {
             max-width: 1300px; margin: 0 auto; display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; padding: 0 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; padding: 0 25px;
         }
 
         .card {
-            background: var(--bg-alt); padding: 60px 45px; border-radius: 30px;
-            transition: var(--transition); border: 1px solid rgba(0,0,0,0.02);
-            position: relative; overflow: hidden;
+            background: var(--white); padding: 50px 40px; border-radius: 20px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition); cursor: pointer;
         }
 
-        .card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px;
-            background: var(--primary); transform: scaleX(0); transition: var(--transition);
-        }
-
-        .card:hover { transform: translateY(-15px); background: var(--white); box-shadow: var(--shadow-lg); }
-        .card:hover::before { transform: scaleX(1); }
+        .card:hover { transform: translateY(-10px); box-shadow: var(--shadow-md); border-color: transparent; }
 
         .card-icon {
-            width: 80px; height: 80px; background: var(--white); border-radius: 20px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 2rem; color: var(--primary); margin-bottom: 30px;
-            box-shadow: var(--shadow-sm);
+            font-size: 2.5rem; color: var(--primary); margin-bottom: 25px;
+            transition: var(--transition);
         }
+        .card:hover .card-icon { color: var(--accent); transform: scale(1.1); }
 
-        .card h3 { font-size: 1.6rem; margin-bottom: 15px; font-weight: 700; }
-        .card p { color: var(--text-light); font-size: 1rem; }
+        .card h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 15px; color: var(--primary); }
+        .card p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 25px; line-height: 1.7;}
+        
+        .card-link {
+            display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--primary); text-decoration: none; font-size: 0.9rem; transition: var(--transition);
+        }
+        .card:hover .card-link { color: var(--accent); gap: 12px; }
 
-        /* --- GALLERY SECTION --- */
-        .gallery { padding: 120px 0; background: #0F172A; color: var(--white); }
-        .gallery-mosaic {
+        /* --- GALLERY / CLINIC SECTION --- */
+        .gallery { padding: 100px 0; background: var(--bg-alt); }
+        .gallery-grid {
             max-width: 1300px; margin: 0 auto; display: grid;
-            grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 300px);
-            gap: 20px; padding: 0 25px;
+            grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 0 25px;
         }
 
-        .m-item { border-radius: 25px; overflow: hidden; position: relative; }
-        .m-item img { width: 100%; height: 100%; object-fit: cover; transition: 1s ease; opacity: 0.8; }
-        .m-item:hover img { transform: scale(1.1); opacity: 1; }
+        .g-item { border-radius: 20px; overflow: hidden; position: relative; height: 300px; box-shadow: var(--shadow-sm);}
+        .g-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .g-item:hover img { transform: scale(1.08); }
+        .g-item.large { grid-column: span 2; }
 
-        .m-1 { grid-column: span 2; grid-row: span 2; }
-        .m-2 { grid-column: span 2; }
-
-        /* --- INFO BAR --- */
-        .info-bar { background: var(--primary); color: var(--white); padding: 60px 0; }
-        .info-flex {
-            max-width: 1300px; margin: 0 auto; display: flex;
-            justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 40px;
+        /* --- CALL TO ACTION BANNER --- */
+        .cta-banner {
+            max-width: 1250px; margin: -50px auto 50px; background: var(--primary);
+            border-radius: 25px; padding: 60px; display: flex; justify-content: space-between; align-items: center;
+            box-shadow: var(--shadow-lg); position: relative; z-index: 10; flex-wrap: wrap; gap: 30px;
         }
-        .info-item h4 { font-size: 1.2rem; margin-bottom: 5px; }
-        .info-item p { opacity: 0.8; }
+        .cta-banner h2 { color: var(--white); font-size: 2.2rem; font-weight: 800; margin-bottom: 10px;}
+        .cta-banner p { color: #A0B3C6; font-size: 1.1rem;}
+        .btn-white { background: var(--white); color: var(--primary); padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 800; transition: var(--transition);}
+        .btn-white:hover { background: var(--accent); color: var(--white); transform: translateY(-3px);}
+
+        /* --- FOOTER --- */
+        footer { background: var(--primary); color: var(--white); padding: 120px 0 30px; margin-top: 50px;}
+        .footer-grid {
+            max-width: 1300px; margin: 0 auto; display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; padding: 0 25px 60px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-logo { font-size: 1.8rem; font-weight: 800; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 10px; margin-bottom: 20px;}
+        .footer-text { color: #A0B3C6; font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;}
+        
+        .footer-socials { display: flex; gap: 15px; }
+        .footer-socials a { width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); transition: var(--transition); text-decoration: none;}
+        .footer-socials a:hover { background: var(--accent); transform: translateY(-3px); }
+
+        .footer-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 25px; color: var(--white); }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #A0B3C6; text-decoration: none; transition: var(--transition); font-size: 0.95rem;}
+        .footer-links a:hover { color: var(--accent); padding-left: 5px;}
+
+        .footer-contact li { display: flex; gap: 15px; margin-bottom: 20px; color: #A0B3C6; font-size: 0.95rem; align-items: flex-start;}
+        .footer-contact i { color: var(--accent); font-size: 1.2rem; margin-top: 3px;}
+
+        .copyright { text-align: center; color: #A0B3C6; font-size: 0.9rem; padding-top: 30px; }
 
         /* --- REVEAL ANIMATIONS --- */
-        .reveal { opacity: 0; transform: translateY(50px); transition: 1s ease-out; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        /* Delays para os cards */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
 
-        /* --- MOBILE REVISION --- */
+        /* --- RESPONSIVIDADE --- */
         @media (max-width: 1024px) {
-            .hero-text h1 { font-size: 3.5rem; }
-            .hero-grid { grid-template-columns: 1fr; text-align: center; }
-            .hero-text p { margin: 0 auto 40px; }
-            .hero-img-box { margin-top: 50px; }
-            .floating-review { display: none; }
-            .nav-links { display: none; }
+            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 40px;}
+            .hero-text h1 { font-size: 3.2rem; }
+            .hero-text p { margin: 0 auto 30px; }
+            .hero-img-box { text-align: center; }
+            .hero-img-box img { max-width: 100%; border-radius: 20px; }
+            .floating-badge { left: 10%; bottom: 20px; }
+            .nav-links { display: none; /* Menu sanduíche necessitaria de JS extra, ocultado por simplicidade */ }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
-            .hero-text h1 { font-size: 2.8rem; }
-            .gallery-mosaic { grid-template-columns: 1fr; grid-template-rows: auto; }
-            .m-1, .m-2 { grid-column: span 1; grid-row: span 1; height: 300px; }
-            .card { padding: 40px 25px; }
+            .top-bar { display: none; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .g-item.large { grid-column: span 1; }
+            .cta-banner { flex-direction: column; text-align: center; padding: 40px 20px; margin: 0 20px 50px;}
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Barra do topo -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="top-bar-contact">
+                <span><i class="fas fa-map-marker-alt"></i> Rua Dentista Bernal, 123 - Centro</span>
+                <span><i class="far fa-envelope"></i> contato@drbernal.com.br</span>
+            </div>
+            <div class="top-bar-contact">
+                <span><i class="far fa-clock"></i> Seg - Sex: 08:00 - 18:00</span>
+            </div>
+        </div>
+    </div>
+
     <header id="header">
         <nav class="nav-container">
-            <a href="#" class="logo-text">Dr. Bernal</a>
+            <a href="#" class="logo">
+                <i class="fas fa-tooth"></i>
+                <span class="logo-text">Dr. Bernal</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="#home">Início</a></li>
-                <li><a href="#servicos">Especialidades</a></li>
-                <li><a href="#consultorio">Consultório</a></li>
-                <li><a href="#contato">Contato</a></li>
+                <li><a href="#servicos">Tratamentos</a></li>
+                <li><a href="#consultorio">O Consultório</a></li>
             </ul>
-            <a href="https://wa.me/5500000000000" class="btn-cta">Agendar Consulta</a>
+            <a href="https://wa.me/5500000000000" class="btn-cta" target="_blank">
+                Agendar Consulta <i class="fas fa-arrow-right"></i>
+            </a>
         </nav>
     </header>
 
     <section class="hero" id="home">
         <div class="hero-grid">
-            <div class="hero-text">
-                <span class="hero-tag">Tecnologia & Estética</span>
-                <h1>Seu sorriso é a sua <span>melhor</span> versão.</h1>
-                <p>O Dr. Bernal utiliza protocolos internacionais para garantir resultados naturais e duradouros na reabilitação do seu sorriso.</p>
-                <div style="display: flex; gap: 20px; justify-content: inherit;">
-                    <a href="#servicos" class="btn-cta">Ver Tratamentos</a>
-                    <a href="#consultorio" style="color: var(--text-main); font-weight: 700; text-decoration: none; padding: 14px 0;">Conhecer Espaço &rarr;</a>
+            <div class="hero-text reveal">
+                <span class="hero-tag">Odontologia Especializada</span>
+                <h1>O seu destino para um sorriso <span>perfeito</span></h1>
+                <p>Equipados com tecnologia de ponta e focados no seu conforto. O Dr. Bernal transforma a sua saúde bucal e devolve a sua confiança.</p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="#servicos" class="btn-cta">Ver Especialidades</a>
                 </div>
             </div>
 
-            <div class="hero-img-box">
-                <img src="dentista%20bernal.png" alt="Dr. Bernal" class="doctor-portrait" id="main-doctor">
-                <div class="floating-review">
-                    <div style="color: #FFD700; margin-bottom: 10px;">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <div class="hero-img-box reveal delay-2">
+                <!-- Usando o nome exato do seu repositório -->
+                <img src="dentista bernal.png" alt="Dr. Bernal - Especialista">
+                
+                <div class="floating-badge">
+                    <div class="badge-icon"><i class="fas fa-star"></i></div>
+                    <div class="badge-text">
+                        <h4>4.9/5</h4>
+                        <p>Pacientes Satisfeitos</p>
                     </div>
-                    <p style="font-size: 0.9rem; font-style: italic; color: #444;">"O atendimento superou todas as minhas expectativas. Tecnologia de ponta!"</p>
-                    <strong style="display: block; margin-top: 10px; font-size: 0.8rem; color: var(--primary);">Cláudia Mendes</strong>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="info-bar">
-        <div class="info-flex">
-            <div class="info-item">
-                <h4><i class="far fa-clock"></i> Horário</h4>
-                <p>Seg a Sex: 08h às 19h</p>
+    <!-- Barra de Estatísticas (Igual a "Why Us" da referência) -->
+    <section class="stats-bar reveal">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>500+</h3>
+                <p>Sorrisos Transformados</p>
             </div>
-            <div class="info-item">
-                <h4><i class="fas fa-map-marker-alt"></i> Local</h4>
-                <p>Edifício Prime, Sala 402</p>
+            <div class="stat-item">
+                <h3>15+</h3>
+                <p>Anos de Experiência</p>
             </div>
-            <div class="info-item">
-                <h4><i class="fab fa-whatsapp"></i> Contato</h4>
-                <p>(11) 98888-7777</p>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Tecnologia Digital</p>
             </div>
         </div>
     </section>
 
     <section id="servicos" class="services">
         <div class="section-header reveal">
-            <h2>Especialidades em Foco</h2>
-            <p style="color: var(--text-light);">Tratamentos personalizados com precisão digital.</p>
+            <span class="section-tag">Nossos Serviços</span>
+            <h2>O Que Fazemos Pelo Seu Sorriso</h2>
+            <p style="color: var(--text-light); font-size: 1.1rem;">Tratamentos odontológicos premium focados em estética, função e longevidade.</p>
         </div>
 
         <div class="services-grid">
-            <div class="card reveal">
+            <div class="card reveal delay-1">
                 <div class="card-icon"><i class="fas fa-teeth"></i></div>
-                <h3>Lentes de Contato</h3>
-                <p>Transformação estética minimamente invasiva para um sorriso harmônico e branco natural.</p>
+                <h3>Lentes de Contato Dental</h3>
+                <p>Facetas de porcelana ultrafinas para corrigir formato, cor e alinhamento, criando um sorriso harmônico e natural de forma rápida.</p>
+                <a href="https://wa.me/5500000000000" class="card-link">Saber mais <i class="fas fa-arrow-right"></i></a>
             </div>
-            <div class="card reveal">
-                <div class="card-icon"><i class="fas fa-microscope"></i></div>
-                <h3>Implantes Digitais</h3>
-                <p>Planejamento computadorizado que garante cirurgias rápidas, seguras e com pós-operatório leve.</p>
+            <div class="card reveal delay-2">
+                <div class="card-icon"><i class="fas fa-tooth"></i></div>
+                <h3>Implantes Computadorizados</h3>
+                <p>Reposição de dentes perdidos com planejamento 3D. Cirurgia guiada, sem cortes excessivos, garantindo uma recuperação impecável.</p>
+                <a href="https://wa.me/5500000000000" class="card-link">Saber mais <i class="fas fa-arrow-right"></i></a>
             </div>
-            <div class="card reveal">
-                <div class="card-icon"><i class="fas fa-align-center"></i></div>
-                <h3>Invisalign</h3>
-                <p>Alinhamento dental com placas invisíveis, conforto total e resultados acelerados.</p>
+            <div class="card reveal delay-3">
+                <div class="card-icon"><i class="fas fa-smile"></i></div>
+                <h3>Invisalign (Alinhadores)</h3>
+                <p>O aparelho invisível mais avançado do mundo. Confortável, removível e previsível, alinhando seus dentes de forma discreta.</p>
+                <a href="https://wa.me/5500000000000" class="card-link">Saber mais <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
 
     <section id="consultorio" class="gallery">
-        <div class="section-header reveal" style="color: white; margin-bottom: 60px;">
-            <h2>Nosso Espaço</h2>
-            <p style="opacity: 0.6;">Ambiente planejado para o seu máximo conforto.</p>
+        <div class="section-header reveal">
+            <span class="section-tag">Nossa Estrutura</span>
+            <h2>Conheça o Nosso Espaço</h2>
+            <p style="color: var(--text-light); font-size: 1.1rem;">Um ambiente projetado para tirar o seu medo de dentista, oferecendo máximo conforto e sofisticação.</p>
         </div>
         
-        <div class="gallery-mosaic reveal">
-            <div class="m-item m-1"><img src="consultorio.webp" alt="Consultório"></div>
-            <div class="m-item m-2"><img src="vis%C3%A3oconsultorio.webp" alt="Recepção"></div>
-            <div class="m-item"><img src="maisconsultorio.webp" alt="Equipamentos"></div>
-            <div class="m-item"><img src="sorriso.webp" alt="Sala VIP"></div>
+        <div class="gallery-grid reveal delay-1">
+            <!-- Usando os nomes EXATOS dos arquivos do seu Github -->
+            <div class="g-item large"><img src="consultorio.jpg" alt="Recepção do Consultório"></div>
+            <div class="g-item"><img src="sorriso.jpg" alt="Paciente Sorrindo"></div>
+            <div class="g-item"><img src="gallery-image-2-small.jpg" alt="Estrutura 1"></div>
+            <div class="g-item"><img src="gallery-image-3-small.jpg" alt="Estrutura 2"></div>
+            <div class="g-item"><img src="gallery-image-4-small.jpg" alt="Equipamentos"></div>
         </div>
     </section>
 
-    <footer id="contato" style="padding: 100px 0 40px; background: #080C14; color: white;">
-        <div style="max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; padding: 0 25px;">
+    <!-- Banner Chamada de Ação Final (Fica sobreposto ao footer) -->
+    <div class="cta-banner reveal">
+        <div>
+            <h2>Pronto para transformar seu sorriso?</h2>
+            <p>Agende sua avaliação inicial e descubra o melhor plano de tratamento para você.</p>
+        </div>
+        <a href="https://wa.me/5500000000000" class="btn-white">Fale no WhatsApp</a>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
             <div>
-                <a href="#" class="logo-text" style="color: white;">Dr. Bernal</a>
-                <p style="margin-top: 20px; opacity: 0.6;">Excelência em odontologia moderna. Agende sua avaliação e descubra o poder de um sorriso saudável.</p>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 25px;">Menu</h4>
-                <ul style="list-style: none; line-height: 2.5; opacity: 0.7;">
-                    <li><a href="#home" style="color: white; text-decoration: none;">Início</a></li>
-                    <li><a href="#servicos" style="color: white; text-decoration: none;">Serviços</a></li>
-                    <li><a href="#consultorio" style="color: white; text-decoration: none;">Consultório</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 25px;">Redes Sociais</h4>
-                <div style="display: flex; gap: 20px; font-size: 1.5rem;">
-                    <a href="#" style="color: white;"><i class="fab fa-instagram"></i></a>
-                    <a href="#" style="color: white;"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" style="color: white;"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="footer-logo">
+                    <i class="fas fa-tooth"></i> Dr. Bernal
+                </a>
+                <p class="footer-text">Elevando o padrão da odontologia moderna com ciência, arte e tecnologia voltadas para o seu bem-estar.</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
+            
+            <div>
+                <h4 class="footer-title">Navegação</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#servicos">Tratamentos</a></li>
+                    <li><a href="#consultorio">Estrutura</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="footer-title">Tratamentos</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Lentes de Contato</a></li>
+                    <li><a href="#">Implantes Dentários</a></li>
+                    <li><a href="#">Clareamento a Laser</a></li>
+                    <li><a href="#">Invisalign</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="footer-title">Contato</h4>
+                <ul class="footer-contact">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Rua Dentista Bernal, 123<br>Edifício Prime - Sala 40<br>São Paulo - SP</span>
+                    </li>
+                    <li>
+                        <i class="fab fa-whatsapp"></i>
+                        <span>(11) 99999-9999</span>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div style="text-align: center; margin-top: 80px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; opacity: 0.4;">
-            &copy; 2026 Dr. Bernal - Odontologia de Alta Performance.
+        <div class="copyright">
+            &copy; 2026 Dr. Bernal Odontologia. Todos os direitos reservados.
         </div>
     </footer>
 
     <script>
-        // Sticky Header Logic
+        // Efeito do Header ao rolar a página
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 80) header.classList.add('sticky');
-            else header.classList.remove('sticky');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
 
-        // Scroll Reveal Animation
-        const reveals = document.querySelectorAll('.reveal');
-        const observerOptions = { threshold: 0.15 };
-
-        const observer = new IntersectionObserver((entries) => {
+        // Animação de Scroll (Revelar elementos suavemente)
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
-        }, observerOptions);
-
-        reveals.forEach(el => observer.observe(el));
-
-        // Image Path Auto-Correction & Error Handling
-        document.querySelectorAll('img').forEach(img => {
-            img.onerror = function() {
-                console.log("Erro ao carregar:", this.src);
-                // Tenta trocar extensão webp para png caso o github tenha problema de mime-type
-                if(this.src.includes('.webp')) {
-                    this.src = this.src.replace('.webp', '.png');
-                } else if(this.src.includes('.png')) {
-                    this.src = this.src.replace('.png', '.jpg');
-                }
-            };
-        });
-
-        // Smooth Scroll Offset
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 90,
-                        behavior: 'smooth'
-                    });
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Anima apenas uma vez
                 }
             });
+        }, {
+            root: null,
+            threshold: 0.15, // Ativa quando 15% do elemento aparece
+            rootMargin: "0px 0px -50px 0px"
         });
+
+        revealElements.forEach(el => revealObserver.observe(el));
     </script>
 </body>
 </html>
